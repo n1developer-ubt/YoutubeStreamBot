@@ -1,0 +1,231 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: selenium-edge-node
+   namespace: default
+   uid: edc5cb85-8116-4b6b-806d-7a63f604aa43
+   resourceVersion: "2708"
+   generation: 1
+   creationTimestamp: "2022-12-28T19:26:45Z"
+   labels:
+      app: selenium-edge-node
+      app.kubernetes.io/component: selenium-grid-4.7.2-20221219
+      app.kubernetes.io/instance: selenium-grid
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: selenium-edge-node
+      app.kubernetes.io/version: 4.7.2-20221219
+      helm.sh/chart: selenium-grid-0.14.3
+   annotations:
+      deployment.kubernetes.io/revision: "1"
+      meta.helm.sh/release-name: selenium-grid
+      meta.helm.sh/release-namespace: default
+   managedFields:
+      - manager: helm
+        operation: Update
+        apiVersion: apps/v1
+        time: "2022-12-28T19:26:45Z"
+        fieldsType: FieldsV1
+        fieldsV1:
+           f:metadata:
+              f:annotations:
+                 .: {}
+                 f:meta.helm.sh/release-name: {}
+                 f:meta.helm.sh/release-namespace: {}
+              f:labels:
+                 .: {}
+                 f:app: {}
+                 f:app.kubernetes.io/component: {}
+                 f:app.kubernetes.io/instance: {}
+                 f:app.kubernetes.io/managed-by: {}
+                 f:app.kubernetes.io/name: {}
+                 f:app.kubernetes.io/version: {}
+                 f:helm.sh/chart: {}
+           f:spec:
+              f:progressDeadlineSeconds: {}
+              f:replicas: {}
+              f:revisionHistoryLimit: {}
+              f:selector: {}
+              f:strategy:
+                 f:rollingUpdate:
+                    .: {}
+                    f:maxSurge: {}
+                    f:maxUnavailable: {}
+                 f:type: {}
+              f:template:
+                 f:metadata:
+                    f:annotations:
+                       .: {}
+                       f:checksum/event-bus-configmap: {}
+                    f:labels:
+                       .: {}
+                       f:app: {}
+                       f:app.kubernetes.io/component: {}
+                       f:app.kubernetes.io/instance: {}
+                       f:app.kubernetes.io/managed-by: {}
+                       f:app.kubernetes.io/name: {}
+                       f:app.kubernetes.io/version: {}
+                       f:helm.sh/chart: {}
+                 f:spec:
+                    f:containers:
+                       k:{"name":"selenium-edge-node"}:
+                          .: {}
+                          f:envFrom: {}
+                          f:image: {}
+                          f:imagePullPolicy: {}
+                          f:name: {}
+                          f:ports:
+                             .: {}
+                             k:{"containerPort":5555,"protocol":"TCP"}:
+                                .: {}
+                                f:containerPort: {}
+                                f:protocol: {}
+                          f:resources:
+                             .: {}
+                             f:limits:
+                                .: {}
+                                f:cpu: {}
+                                f:memory: {}
+                             f:requests:
+                                .: {}
+                                f:cpu: {}
+                                f:memory: {}
+                          f:terminationMessagePath: {}
+                          f:terminationMessagePolicy: {}
+                          f:volumeMounts:
+                             .: {}
+                             k:{"mountPath":"/dev/shm"}:
+                                .: {}
+                                f:mountPath: {}
+                                f:name: {}
+                    f:dnsPolicy: {}
+                    f:restartPolicy: {}
+                    f:schedulerName: {}
+                    f:securityContext: {}
+                    f:terminationGracePeriodSeconds: {}
+                    f:volumes:
+                       .: {}
+                       k:{"name":"dshm"}:
+                          .: {}
+                          f:emptyDir:
+                             .: {}
+                             f:medium: {}
+                             f:sizeLimit: {}
+                          f:name: {}
+      - manager: kube-controller-manager
+        operation: Update
+        apiVersion: apps/v1
+        time: "2022-12-28T19:27:23Z"
+        fieldsType: FieldsV1
+        fieldsV1:
+           f:metadata:
+              f:annotations:
+                 f:deployment.kubernetes.io/revision: {}
+           f:status:
+              f:availableReplicas: {}
+              f:conditions:
+                 .: {}
+                 k:{"type":"Available"}:
+                    .: {}
+                    f:lastTransitionTime: {}
+                    f:lastUpdateTime: {}
+                    f:message: {}
+                    f:reason: {}
+                    f:status: {}
+                    f:type: {}
+                 k:{"type":"Progressing"}:
+                    .: {}
+                    f:lastTransitionTime: {}
+                    f:lastUpdateTime: {}
+                    f:message: {}
+                    f:reason: {}
+                    f:status: {}
+                    f:type: {}
+              f:observedGeneration: {}
+              f:readyReplicas: {}
+              f:replicas: {}
+              f:updatedReplicas: {}
+        subresource: status
+   selfLink: /apis/apps/v1/namespaces/default/deployments/selenium-edge-node
+status:
+   observedGeneration: 1
+   replicas: 1
+   updatedReplicas: 1
+   readyReplicas: 1
+   availableReplicas: 1
+   conditions:
+      - type: Available
+        status: "True"
+        lastUpdateTime: "2022-12-28T19:27:23Z"
+        lastTransitionTime: "2022-12-28T19:27:23Z"
+        reason: MinimumReplicasAvailable
+        message: Deployment has minimum availability.
+      - type: Progressing
+        status: "True"
+        lastUpdateTime: "2022-12-28T19:27:23Z"
+        lastTransitionTime: "2022-12-28T19:26:45Z"
+        reason: NewReplicaSetAvailable
+        message: ReplicaSet "selenium-edge-node-75c86b7f6b" has successfully progressed.
+spec:
+   replicas: 1
+   selector:
+      matchLabels:
+         app: selenium-edge-node
+         app.kubernetes.io/instance: selenium-grid
+   template:
+      metadata:
+         creationTimestamp: null
+         labels:
+            app: selenium-edge-node
+            app.kubernetes.io/component: selenium-grid-4.7.2-20221219
+            app.kubernetes.io/instance: selenium-grid
+            app.kubernetes.io/managed-by: helm
+            app.kubernetes.io/name: selenium-edge-node
+            app.kubernetes.io/version: 4.7.2-20221219
+            helm.sh/chart: selenium-grid-0.14.3
+         annotations:
+            checksum/event-bus-configmap: 9156097172c0e23335a99955c96681563bc6b2da694d31034b5a9d3210757d84
+      spec:
+         volumes:
+            - name: dshm
+              emptyDir:
+                 medium: Memory
+                 sizeLimit: 1Gi
+         containers:
+            - name: selenium-edge-node
+              image: selenium/node-edge:4.7.2-20221219
+              env:
+                 - name: SE_NODE_MAX_SESSIONS
+                   value: "100"
+                 - name: SE_NODE_OVERRIDE_MAX_SESSIONS
+                   value: "true"
+              ports:
+                 - containerPort: 5555
+                   protocol: TCP
+              envFrom:
+                 - configMapRef:
+                      name: selenium-event-bus-config
+              resources:
+                 limits:
+                    cpu: "6"
+                    memory: 25Gi
+                 requests:
+                    cpu: "6"
+                    memory: 25Gi
+              volumeMounts:
+                 - name: dshm
+                   mountPath: /dev/shm
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: IfNotPresent
+         restartPolicy: Always
+         terminationGracePeriodSeconds: 30
+         dnsPolicy: ClusterFirst
+         securityContext: {}
+         schedulerName: default-scheduler
+   strategy:
+      type: RollingUpdate
+      rollingUpdate:
+         maxUnavailable: 25%
+         maxSurge: 25%
+   revisionHistoryLimit: 10
+   progressDeadlineSeconds: 600

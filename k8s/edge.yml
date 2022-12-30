@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: selenium-edge-node
+   namespace: default
+   labels:
+      app: selenium-edge-node
+      app.kubernetes.io/component: selenium-grid-4.7.2-20221219
+      app.kubernetes.io/instance: selenium-grid
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: selenium-edge-node
+      app.kubernetes.io/version: 4.7.2-20221219
+      helm.sh/chart: selenium-grid-0.14.3
+   annotations:
+      deployment.kubernetes.io/revision: "1"
+      meta.helm.sh/release-name: selenium-grid
+      meta.helm.sh/release-namespace: default
+   selfLink: /apis/apps/v1/namespaces/default/deployments/selenium-edge-node
+status:
+   observedGeneration: 1
+   replicas: 1
+   updatedReplicas: 1
+   readyReplicas: 1
+   availableReplicas: 1
+   conditions:
+      - type: Available
+        status: "True"
+        lastUpdateTime: "2022-12-28T19:27:23Z"
+        lastTransitionTime: "2022-12-28T19:27:23Z"
+        reason: MinimumReplicasAvailable
+        message: Deployment has minimum availability.
+      - type: Progressing
+        status: "True"
+        lastUpdateTime: "2022-12-28T19:27:23Z"
+        lastTransitionTime: "2022-12-28T19:26:45Z"
+        reason: NewReplicaSetAvailable
+        message: ReplicaSet "selenium-edge-node-75c86b7f6b" has successfully progressed.
+spec:
+   replicas: 25
+   selector:
+      matchLabels:
+         app: selenium-edge-node
+         app.kubernetes.io/instance: selenium-grid
+   template:
+      metadata:
+         creationTimestamp: null
+         labels:
+            app: selenium-edge-node
+            app.kubernetes.io/component: selenium-grid-4.7.2-20221219
+            app.kubernetes.io/instance: selenium-grid
+            app.kubernetes.io/managed-by: helm
+            app.kubernetes.io/name: selenium-edge-node
+            app.kubernetes.io/version: 4.7.2-20221219
+            helm.sh/chart: selenium-grid-0.14.3
+         annotations:
+            checksum/event-bus-configmap: 9156097172c0e23335a99955c96681563bc6b2da694d31034b5a9d3210757d84
+      spec:
+         volumes:
+            - name: dshm
+              emptyDir:
+                 medium: Memory
+                 sizeLimit: 5Gi
+         containers:
+            - name: selenium-edge-node
+              image: selenium/node-edge:4.7.2-20221219
+              env:
+                 - name: SE_NODE_MAX_SESSIONS
+                   value: "1"
+                 - name: SE_NODE_OVERRIDE_MAX_SESSIONS
+                   value: "true"
+              ports:
+                 - containerPort: 5555
+                   protocol: TCP
+              envFrom:
+                 - configMapRef:
+                      name: selenium-event-bus-config
+              resources:
+                 limits:
+                    cpu: "1.1"
+                    memory: "1843M"
+                 requests:
+                    cpu: "1.1"
+                    memory: "1843M"
+              volumeMounts:
+                 - name: dshm
+                   mountPath: /dev/shm
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: IfNotPresent
+         restartPolicy: Always
+         terminationGracePeriodSeconds: 30
+         dnsPolicy: ClusterFirst
+         securityContext: {}
+         schedulerName: default-scheduler
+   strategy:
+      type: RollingUpdate
+      rollingUpdate:
+         maxUnavailable: 25%
+         maxSurge: 25%
+   revisionHistoryLimit: 10
+   progressDeadlineSeconds: 600

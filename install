@@ -1,0 +1,1 @@
+helm install selenium-grid docker-selenium/selenium-grid

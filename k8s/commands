@@ -1,0 +1,7 @@
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+helm install selenium-grid docker-selenium/selenium-grid
+
+kubectl -n kubernetes-dashboard create token admin-user
+
+kube proxy

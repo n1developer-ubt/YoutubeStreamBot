@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: selenium-chrome-node
+   namespace: default
+   resourceVersion: "5856"
+   generation: 1
+   labels:
+      app: selenium-chrome-node
+      app.kubernetes.io/component: selenium-grid-4.7.2-20221219
+      app.kubernetes.io/instance: selenium-grid
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: selenium-chrome-node
+      app.kubernetes.io/version: 4.7.2-20221219
+      helm.sh/chart: selenium-grid-0.14.3
+   annotations:
+      deployment.kubernetes.io/revision: "1"
+      meta.helm.sh/release-name: selenium-grid
+      meta.helm.sh/release-namespace: default
+status:
+   observedGeneration: 1
+   replicas: 1
+   updatedReplicas: 1
+   readyReplicas: 1
+   availableReplicas: 1
+   conditions:
+      - type: Available
+        status: "True"
+        lastUpdateTime: "2022-12-30T06:17:31Z"
+        lastTransitionTime: "2022-12-30T06:17:31Z"
+        reason: MinimumReplicasAvailable
+        message: Deployment has minimum availability.
+      - type: Progressing
+        status: "True"
+        lastUpdateTime: "2022-12-30T06:17:31Z"
+        lastTransitionTime: "2022-12-30T06:16:59Z"
+        reason: NewReplicaSetAvailable
+        message: >-
+           ReplicaSet "selenium-chrome-node-797667986b" has successfully
+           progressed.
+spec:
+   replicas: 14
+   selector:
+      matchLabels:
+         app: selenium-chrome-node
+         app.kubernetes.io/instance: selenium-grid
+   template:
+      metadata:
+         creationTimestamp: null
+         labels:
+            app: selenium-chrome-node
+            app.kubernetes.io/component: selenium-grid-4.7.2-20221219
+            app.kubernetes.io/instance: selenium-grid
+            app.kubernetes.io/managed-by: helm
+            app.kubernetes.io/name: selenium-chrome-node
+            app.kubernetes.io/version: 4.7.2-20221219
+            helm.sh/chart: selenium-grid-0.14.3
+         annotations:
+            checksum/event-bus-configmap: 9156097172c0e23335a99955c96681563bc6b2da694d31034b5a9d3210757d84
+      spec:
+         volumes:
+            - name: dshm
+              emptyDir:
+                 medium: Memory
+                 sizeLimit: 1Gi
+         containers:
+            - name: selenium-chrome-node
+              image: selenium/node-chrome:4.7.2-20221219
+              ports:
+                 - containerPort: 5555
+                   protocol: TCP
+              envFrom:
+                 - configMapRef:
+                      name: selenium-event-bus-config
+              resources:
+                 limits:
+                    cpu: "0.40"
+                    memory: "2Gi"
+                 requests:
+                    cpu: "0.40"
+                    memory: "2Gi"
+              volumeMounts:
+                 - name: dshm
+                   mountPath: /dev/shm
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: IfNotPresent
+         restartPolicy: Always
+         terminationGracePeriodSeconds: 30
+         dnsPolicy: ClusterFirst
+         securityContext: {}
+         schedulerName: default-scheduler
+   strategy:
+      type: RollingUpdate
+      rollingUpdate:
+         maxUnavailable: 25%
+         maxSurge: 25%
+   revisionHistoryLimit: 10
+   progressDeadlineSeconds: 600
