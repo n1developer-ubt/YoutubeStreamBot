@@ -64,8 +64,8 @@ namespace YoutubeStreamBot
             _linkToStream = linkToStream;
             _gridInfo = grid;
             _index = index;
-            // _proxyPluginPath = proxy.GetZippedPugin(index, true);
-            _proxyPluginPath = "/Users/ubt/Documents/Projects/YoutubeStreamBot/proxy.zip";
+            _proxyPluginPath = proxy.GetZippedPugin(index, true);
+            // _proxyPluginPath = "/Users/ubt/Documents/Projects/YoutubeStreamBot/proxy.zip";
         }
 
         public string SearchText { get; set; }
@@ -101,7 +101,7 @@ namespace YoutubeStreamBot
                 var driverService = ChromeDriverService.CreateDefaultService();
                 driverService.HideCommandPromptWindow = true;
                 driverService.SuppressInitialDiagnosticInformation = true;
-                options.AddExtension(_proxyPluginPath);
+                // options.AddExtension(_proxyPluginPath);
                 _driver = new ChromeDriver(driverService, options);
                 // Console.WriteLine($"[{Id}] Started");
             }
@@ -114,7 +114,7 @@ namespace YoutubeStreamBot
             //216.158.201.0
             Decrease("starting");
             Increase("navigating");
-            _driver.Navigate().GoToUrl("https://www.youtube.com/watch?v=hT06PRbvzgk&ab_channel=OyunD%C3%BCnyas%C4%B1TR");
+            _driver.Navigate().GoToUrl("https://www.youtube.com/watch?v=YBJ0Zsg9Cn8");
             Thread.Sleep(10000);
             StartRandomCursor();
             StartRandomScroll();

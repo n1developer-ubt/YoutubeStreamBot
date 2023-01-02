@@ -1,2 +1,7 @@
 /proxyplugin
 /sessions
+plugins/10001_proxy.zip
+plugins
+./bin
+./obj
+obj

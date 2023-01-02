@@ -9,7 +9,7 @@ var grids = new List<GridInfo>
 {
     new GridInfo
     {
-        Url = "http://144.126.255.72:4444/wd/hub",
+        Url = "http://24.199.76.56:4444/wd/hub",
         Browser = "edge",
         Platform = "LINUX",
         Limit = 25,
@@ -17,23 +17,23 @@ var grids = new List<GridInfo>
     },
     new GridInfo
     {
-        Url = "http://35.229.141.143:4444/wd/hub",
-        Browser = "chrome",
+        Url = "http://24.199.70.210:4444/wd/hub",
+        Browser = "edge",
         Platform = "LINUX",
-        Limit = 14,
+        Limit = 25,
         Used = 0
     },
 };
 
 
-var noBots = 20;
+var noBots = 50;
 
 // pp.GetZippedPugin("proxy2.zip");
 
 var bots = new List<YoutubeAutomation>();
 int gridIndex = 0;
 
-var pp = new ProxyPlugin("all.dc.smartproxy.com", 10001, "user-sp52cbgyij", "1234567");
+var pp = new ProxyPlugin("kr.smartproxy.com", 10001, "user-sp52cbgyij", "1234567");
 
 // Create bots
 for (int i = 0; i < noBots; i++)
