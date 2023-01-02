@@ -54,14 +54,17 @@ namespace YoutubeStreamBot
             Console.WriteLine($"Searching: {_stats["searching"]}");
         }
 
-        private readonly string _proxyPluginPath;
-        public YoutubeAutomation(ProxyPlugin proxy, GridInfo grid, string searchText, string linkToStream, bool useRemote, int index)
+        private readonly string? _chromeProfile;
+
+        private readonly string? _proxyPluginPath;
+        public YoutubeAutomation(ProxyPlugin proxy, GridInfo? grid, string? searchText, string? linkToStream, bool useRemote, int index, string? chromeProfile = null)
         {
             _proxyPlugin = proxy;
             SearchText = searchText;
             Id = Guid.NewGuid().ToString();
             useRemoteDriver = useRemote;
             _linkToStream = linkToStream;
+            _chromeProfile = chromeProfile;
             _gridInfo = grid;
             _index = index;
             _proxyPluginPath = proxy.GetZippedPugin(index, true);
@@ -101,8 +104,13 @@ namespace YoutubeStreamBot
                 var driverService = ChromeDriverService.CreateDefaultService();
                 driverService.HideCommandPromptWindow = true;
                 driverService.SuppressInitialDiagnosticInformation = true;
+                if (_chromeProfile != null)
+                {
+                    options.AddArgument($"--user-data-dir={_chromeProfile}");
+                }
                 // options.AddExtension(_proxyPluginPath);
                 _driver = new ChromeDriver(driverService, options);
+
                 // Console.WriteLine($"[{Id}] Started");
             }
 
