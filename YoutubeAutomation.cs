@@ -104,15 +104,19 @@ namespace YoutubeStreamBot
                 var driverService = ChromeDriverService.CreateDefaultService();
                 driverService.HideCommandPromptWindow = true;
                 driverService.SuppressInitialDiagnosticInformation = true;
+                Console.WriteLine(_chromeProfile);
                 if (_chromeProfile != null)
                 {
-                    options.AddArgument($"--user-data-dir={_chromeProfile}");
+                    options.AddArgument(@"user-data-dir=C:\Users\ubt\AppData\Local\Google\Chrome\User Data");
+                    options.AddArgument($"profile-directory={_chromeProfile}");
                 }
                 // options.AddExtension(_proxyPluginPath);
                 _driver = new ChromeDriver(driverService, options);
 
                 // Console.WriteLine($"[{Id}] Started");
             }
+
+            return;
 
 
             if (_driver is RemoteWebDriver driver)

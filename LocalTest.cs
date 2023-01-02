@@ -7,7 +7,18 @@ namespace YoutubeStreamBot
         public static void Test()
         {
             List<string> profiles = new List<string>(){
-                @"C:\Users\ubt\AppData\Local\Google\Chrome\User Data\Profile 3",
+                "Profile 3",
+                "Profile 4",
+                "Profile 5",
+                "Profile 6",
+                "Profile 7",
+                "Profile 8",
+                "Profile 9",
+                "Profile 10",
+                "Profile 11",
+                "Profile 12",
+                "Profile 13",
+
             };
 
             var pp = new ProxyPlugin("kr.smartproxy.com", 10001, "user-sp52cbgyij", "1234567");
