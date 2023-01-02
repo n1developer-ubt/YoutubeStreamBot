@@ -72,7 +72,7 @@ chrome.webRequest.onAuthRequired.addListener(
         {
             var p = increasePort ? Port + id : Port;
 
-            return $"{Host}:p";
+            return $"{Host}:{p}";
         }
         public string GetZippedPugin(int id, bool increasePort = false)
         {
