@@ -70,6 +70,9 @@ chrome.webRequest.onAuthRequired.addListener(
 
         public string GetZippedPugin(int id, bool increasePort = false)
         {
+            //check and create dir proxyplugin
+            if (!Directory.Exists("proxyplugin"))
+                Directory.CreateDirectory("proxyplugin");
             var p = increasePort ? Port + id : Port;
             Console.WriteLine("Id: " + id + " Port: " + p);
             File.WriteAllText(Path.Join("proxyplugin", "manifest.json"), men);
