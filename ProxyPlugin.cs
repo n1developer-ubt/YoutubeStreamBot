@@ -68,6 +68,12 @@ chrome.webRequest.onAuthRequired.addListener(
             ['blocking']
 );";
 
+        public string GetProxyString(int id, bool increasePort = false)
+        {
+            var p = increasePort ? Port + id : Port;
+
+            return $"{Host}:p";
+        }
         public string GetZippedPugin(int id, bool increasePort = false)
         {
             //check and create dir proxyplugin

@@ -30,7 +30,23 @@ namespace YoutubeStreamBot
             {
                 var bot = new YoutubeAutomation(pp, null, null, null, false, index++, profile);
                 listOfBots.Add(bot);
-                bot.Run();
+            }
+
+            foreach (var bot in listOfBots)
+            {
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        bot.Run();
+                    }
+                    catch (Exception e)
+                    {
+                        bot.Stop();
+                        listOfBots.Remove(bot);
+                        Console.WriteLine(e.Message);
+                    }
+                });
             }
 
             Console.WriteLine("Press any key to exit.");
@@ -40,6 +56,8 @@ namespace YoutubeStreamBot
             {
                 bot.Stop();
             }
+
+            Environment.Exit(0);
         }
     }
 }

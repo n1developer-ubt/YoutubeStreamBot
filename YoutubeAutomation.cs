@@ -26,6 +26,7 @@ namespace YoutubeStreamBot
         private GridInfo _gridInfo;
         private int ScrollCount = 5;
         private int _index;
+        private string _proxyString = null;
 
         private static void Increase(string key)
         {
@@ -68,6 +69,7 @@ namespace YoutubeStreamBot
             _gridInfo = grid;
             _index = index;
             _proxyPluginPath = proxy.GetZippedPugin(index, true);
+            _proxyString = proxy.GetProxyString(index, true);
             // _proxyPluginPath = "/Users/ubt/Documents/Projects/YoutubeStreamBot/proxy.zip";
         }
 
@@ -97,7 +99,7 @@ namespace YoutubeStreamBot
             }
             else
             {
-                Increase("starting");
+                // Increase("starting");
                 // Console.WriteLine($"[{Id}] Starting...");
                 ChromeOptions options = new ChromeOptions();
                 //create driver service
@@ -109,6 +111,9 @@ namespace YoutubeStreamBot
                 {
                     options.AddArgument(@"user-data-dir=C:\Users\ubt\AppData\Local\Google\Chrome\User Data");
                     options.AddArgument($"profile-directory={_chromeProfile}");
+                    options.AddArgument("--remote-debugging-port=9222");
+                    options.AddArgument($"--proxy-server={_proxyString}");
+                    options.AddArgument("--no-sandbox");
                 }
                 // options.AddExtension(_proxyPluginPath);
                 _driver = new ChromeDriver(driverService, options);
@@ -116,17 +121,15 @@ namespace YoutubeStreamBot
                 // Console.WriteLine($"[{Id}] Started");
             }
 
-            return;
-
-
             if (_driver is RemoteWebDriver driver)
             {
                 Id = driver.SessionId.ToString();
             }
             //216.158.201.0
-            Decrease("starting");
-            Increase("navigating");
-            _driver.Navigate().GoToUrl("https://www.youtube.com/watch?v=YBJ0Zsg9Cn8");
+            // Decrease("starting");
+            // Increase("navigating");
+            _driver.Navigate().GoToUrl("https://whatismyipaddress.com/");
+            return;
             Thread.Sleep(10000);
             StartRandomCursor();
             StartRandomScroll();
@@ -183,6 +186,7 @@ namespace YoutubeStreamBot
 
         public void Stop()
         {
+            
             _driver?.Quit();
         }
 
