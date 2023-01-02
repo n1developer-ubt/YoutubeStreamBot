@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ubt/Documents/Projects/YoutubeStreamBot/YoutubeStreamBot.csproj": {}
+    "C:\\Users\\ubt\\Documents\\GitHub\\YoutubeStreamBot\\YoutubeStreamBot.csproj": {}
   },
   "projects": {
-    "/Users/ubt/Documents/Projects/YoutubeStreamBot/YoutubeStreamBot.csproj": {
+    "C:\\Users\\ubt\\Documents\\GitHub\\YoutubeStreamBot\\YoutubeStreamBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ubt/Documents/Projects/YoutubeStreamBot/YoutubeStreamBot.csproj",
+        "projectUniqueName": "C:\\Users\\ubt\\Documents\\GitHub\\YoutubeStreamBot\\YoutubeStreamBot.csproj",
         "projectName": "YoutubeStreamBot",
-        "projectPath": "/Users/ubt/Documents/Projects/YoutubeStreamBot/YoutubeStreamBot.csproj",
-        "packagesPath": "/Users/ubt/.nuget/packages/",
-        "outputPath": "/Users/ubt/Documents/Projects/YoutubeStreamBot/obj/",
+        "projectPath": "C:\\Users\\ubt\\Documents\\GitHub\\YoutubeStreamBot\\YoutubeStreamBot.csproj",
+        "packagesPath": "C:\\Users\\ubt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ubt\\Documents\\GitHub\\YoutubeStreamBot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ubt/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ubt\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -65,7 +65,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -74,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
