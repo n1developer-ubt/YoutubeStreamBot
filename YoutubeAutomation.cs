@@ -128,7 +128,7 @@ namespace YoutubeStreamBot
             //216.158.201.0
             // Decrease("starting");
             // Increase("navigating");
-            _driver.Navigate().GoToUrl("https://whatismyipaddress.com/");
+            _driver.Navigate().GoToUrl("http://checkip.dyndns.org/");
             return;
             Thread.Sleep(10000);
             StartRandomCursor();
