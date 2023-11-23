@@ -4,7 +4,7 @@ namespace YoutubeStreamBot
 {
     public class RemoteTesting
     {
-        public void Test()
+        public static void Test()
         {
 
             var grids = new List<GridInfo>
@@ -28,7 +28,7 @@ namespace YoutubeStreamBot
             };
 
 
-            var noBots = 50;
+            var noBots = 1;
 
             // pp.GetZippedPugin("proxy2.zip");
 
@@ -47,7 +47,7 @@ namespace YoutubeStreamBot
                     gridIndex++;
                 }
 
-                bots.Add(new YoutubeAutomation(pp, grid, "파워사다리", "https://youtu.be/3bimA8nakDI", true, i));
+                bots.Add(new YoutubeAutomation(pp, grid, "파워사다리", "https://youtu.be/BX-0Lff02OM", true, i));
             }
 
             // Run bots
